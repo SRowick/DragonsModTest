@@ -7,7 +7,7 @@ function Client_PresentCommercePurchaseUI(rootParent, game, close)
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
 
 	UI.CreateLabel(vert).SetText("Dragons are worth " .. Mod.Settings.TankPower .. " armies and cost " .. Mod.Settings.CostToBuyTank .. " gold to purchase.  You may have up to " .. Mod.Settings.MaxTanks .. " dragons at a time.");
-	UI.CreateButton(vert).SetText("Purchase a dragon egg for " .. Mod.Settings.CostToBuyTank .. " gold").SetOnClick(PurchaseClicked);
+	UI.CreateButton(vert).SetText("Purchase a dragon for " .. Mod.Settings.CostToBuyTank .. " gold").SetOnClick(PurchaseClicked);
 end
 
 function NumTanksIn(armies)
@@ -79,7 +79,7 @@ function TerritoryClicked(terrDetails)
 	else
 		--Territory was clicked, check it
 		if (Game.LatestStanding.Territories[terrDetails.ID].OwnerPlayerID ~= Game.Us.ID) then
-			TargetTerritoryInstructionLabel.SetText("You may only receive a dragon egg on a territory you own.  Please try again.");
+			TargetTerritoryInstructionLabel.SetText("You may only receive a dragon on a territory you own.  Please try again.");
 		else
 			TargetTerritoryInstructionLabel.SetText("Selected territory: " .. terrDetails.Name);
 			SelectedTerritory = terrDetails;
