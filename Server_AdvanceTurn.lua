@@ -40,7 +40,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		local tankPower = Mod.Settings.TankPower;
 
 		local builder = WL.CustomSpecialUnitBuilder.Create(order.PlayerID);
-		builder.Name = 'Tank';
+		builder.Name = 'Dragon';
 		builder.IncludeABeforeName = true;
 		builder.ImageFilename = 'Tank.png';
 		builder.AttackPower = tankPower;
@@ -57,14 +57,14 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		local terrMod = WL.TerritoryModification.Create(targetTerritoryID);
 		terrMod.AddSpecialUnits = {builder.Build()};
 		
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, 'Purchased a dragon', {}, {terrMod}));
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, 'Hatched a dragon', {}, {terrMod}));
 	end
 end
 
 function NumTanksIn(armies)
 	local ret = 0;
 	for _,su in pairs(armies.SpecialUnits) do
-		if (su.proxyType == 'CustomSpecialUnit' and su.Name == 'Tank') then
+		if (su.proxyType == 'CustomSpecialUnit' and su.Name == 'Dragon') then
 			ret = ret + 1;
 		end
 	end
